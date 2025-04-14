@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "otp": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\kvssa\\Desktop\\openapitools\\mcp-typescript\\index.js"
+      ]
+    }
+  }
+}

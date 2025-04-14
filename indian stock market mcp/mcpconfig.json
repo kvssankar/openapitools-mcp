@@ -1,0 +1,12 @@
+{
+  "server_name": "anthropic-mcp-server",
+  "host": "0.0.0.0",
+  "port": 8000,
+  "server_version": "0.1.0",
+  "tool_names": [],
+  "mode": "stdio",
+  "refresh_time_minutes": 1440,
+  "envs": {
+    "x_api_key": "sk-live-rAETxrBOMAYuKVGxbmMgqQlfPoFGsCcu7csbO1PJ"
+  }
+}

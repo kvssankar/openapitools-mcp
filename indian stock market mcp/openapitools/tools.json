@@ -1,0 +1,473 @@
+[
+  {
+    "name": "MutualFundDetailsRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Retrieves detailed information about mutual funds using stock name.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName"
+          ],
+          "properties": {
+            "stockName": {
+              "type": "string",
+              "description": "Name of the stock to get mutual fund details for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "NseMostActiveStocksFetcher",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches the most active stocks from the National Stock Exchange of India",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {},
+          "additionalProperties": false
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockHistoricalStats",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches historical statistics for a specified stock using the Indian Stock API.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName",
+            "stats"
+          ],
+          "properties": {
+            "stats": {
+              "type": "string",
+              "description": "The type of statistics to retrieve"
+            },
+            "stockName": {
+              "type": "string",
+              "description": "The name of the stock to fetch historical statistics for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "BSEMostActiveStocksRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Retrieves the most active stocks from the Bombay Stock Exchange (BSE).",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {}
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockForecastsRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Retrieves stock forecasts data with various filters like measure code, period type, and age.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockId",
+            "measureCode",
+            "periodType",
+            "dataType",
+            "age"
+          ],
+          "properties": {
+            "age": {
+              "enum": [
+                "OneWeekAgo",
+                "ThirtyDaysAgo",
+                "SixtyDaysAgo",
+                "NinetyDaysAgo",
+                "Current"
+              ],
+              "type": "string",
+              "description": "Age of the data to retrieve"
+            },
+            "stockId": {
+              "type": "string",
+              "description": "Identifier for the stock"
+            },
+            "dataType": {
+              "enum": [
+                "Actuals",
+                "Estimates"
+              ],
+              "type": "string",
+              "description": "Type of data to retrieve"
+            },
+            "periodType": {
+              "enum": [
+                "Annual",
+                "Interim"
+              ],
+              "type": "string",
+              "description": "Type of reporting period"
+            },
+            "measureCode": {
+              "enum": [
+                "EPS",
+                "CPS",
+                "CPX",
+                "DPS",
+                "EBI",
+                "EBT",
+                "GPS",
+                "GRM",
+                "NAV",
+                "NDT",
+                "NET",
+                "PRE",
+                "ROA",
+                "ROE",
+                "SAL"
+              ],
+              "type": "string",
+              "description": "Code representing the financial measure"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockHistoricalDataFetcher",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches historical stock data with customizable period and filter options",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName",
+            "period",
+            "filter"
+          ],
+          "properties": {
+            "filter": {
+              "enum": [
+                "default",
+                "price",
+                "pe",
+                "sm",
+                "evebitda",
+                "ptb",
+                "mcs"
+              ],
+              "type": "string",
+              "description": "Filter type for the historical data"
+            },
+            "period": {
+              "enum": [
+                "1m",
+                "6m",
+                "1yr",
+                "3yr",
+                "5yr",
+                "10yr",
+                "max"
+              ],
+              "type": "string",
+              "description": "Time period for historical data"
+            },
+            "stockName": {
+              "type": "string",
+              "description": "Name of the stock to fetch data for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "MutualFundsDataRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Retrieves mutual funds data from the Indian Stock API",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {},
+          "additionalProperties": false
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockDetailsRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Retrieves detailed information about a stock using its name",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName"
+          ],
+          "properties": {
+            "stockName": {
+              "type": "string",
+              "description": "The name of the stock to retrieve details for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "IndustrySearchTool",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Search for industry information using the Indian Stock API",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "query"
+          ],
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query for industry information"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "IndianNewsData",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches news data from Indian stock market API with authentication.",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {}
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockStatementRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Retrieves financial statements for a specified stock using the Statement API.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName",
+            "stats"
+          ],
+          "properties": {
+            "stats": {
+              "type": "string",
+              "description": "The type of financial statistics to retrieve"
+            },
+            "stockName": {
+              "type": "string",
+              "description": "The name of the stock to retrieve statements for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "CommoditiesDataFetcher",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches commodity data from the Indian Stock API with authentication.",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {}
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockTargetPriceAnalyzer",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches target price information for a given stock ID from Indian stock market API.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockId"
+          ],
+          "properties": {
+            "stockId": {
+              "type": "string",
+              "description": "The ID of the stock to get target price information for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "CorporateActionsData",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches corporate actions data for a specified stock using an API.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName"
+          ],
+          "properties": {
+            "stockName": {
+              "type": "string",
+              "description": "Name of the stock to fetch corporate actions data for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "TrendingStocksRetriever",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches trending stocks data from the Indian stock market API.",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {}
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "MutualFundSearch",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Search for mutual funds using a query string",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "query"
+          ],
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search query for mutual funds"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "IndianIPOData",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches IPO data from Indian stock market API using API key authentication",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {},
+          "additionalProperties": false
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "StockFiftyTwoWeekHighLow",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches 52-week high and low data for stocks from Indian stock market API.",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {},
+          "additionalProperties": false
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "RecentAnnouncementsFetcher",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches recent stock announcements using the Indian Stock API.",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "stockName"
+          ],
+          "properties": {
+            "stockName": {
+              "type": "string",
+              "description": "Name of the stock to fetch announcements for"
+            }
+          }
+        },
+        "script_type": "python"
+      }
+    }
+  },
+  {
+    "name": "PriceShockersData",
+    "production_version_name": "main",
+    "versions": {
+      "main": {
+        "description": "Fetches price shockers data from Indian stock market API",
+        "input_schema": {
+          "type": "object",
+          "required": [],
+          "properties": {}
+        },
+        "script_type": "python"
+      }
+    }
+  }
+]
